@@ -1,32 +1,40 @@
 body{
     background-color: #222224;     
 	color: #fff;
-	font-family: Century Gothic, sans-serif;	
+	font-family: Century Gothic, sans-serif;
 }
 #player{
 	color: #E77676;
 }
+img{
+	width: 10px;
+	height: 10px;
+	margin-right: 6px;
+}
 ul{
-	list-style-type:none;
-	padding:0px;
+	list-style-type: none;
+	margin: 0px;
+	text-align: center;
 }
 ul li{
-	display: inline;
-	margin: 2px;
-	float: left;
-}	
-#drop_zone{
-	margin-bottom: 4px;
+	font-size: 13px;
+	margin-right: 5px;
+	
 }
-fieldset{
+footer{
+	text-align: center;
+	margin-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
-	width: 100px;
+	opacity:0.4;
 }
-input{
-	width: 50px;
+h1{
+	padding: 0px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 5px;
 }
-#header_container{
+header{
     border:solid 5px #858185;
     -moz-border-radius-topleft: 30px;
     -moz-border-radius-topright:30px;
@@ -40,47 +48,31 @@ input{
     border-top-right-radius:30px;
     border-bottom-left-radius:0px;
     border-bottom-right-radius:30px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 #main_container{
-    text-align:center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-    width: 405px;
+    width: 402px;
 }
 #c{
     background-color: #37373A;
     border:solid 2px #858185;
-    -moz-border-radius-topleft: 10px;
-    -moz-border-radius-topright:10px;
-    -moz-border-radius-bottomleft:10px;
-    -moz-border-radius-bottomright:10px;
-    -webkit-border-top-left-radius:10px;
-    -webkit-border-top-right-radius:10px;
-    -webkit-border-bottom-left-radius:10px;
-    -webkit-border-bottom-right-radius:10px;
-    border-top-left-radius:10px;
-    border-top-right-radius:10px;
-    border-bottom-left-radius:10px;
-    border-bottom-right-radius:10px;
-
 }
-#board{
-
+#left{
+	float: left;
 }
-#canvasesdiv{
-position: absolute;
-	width: 402px;
-	height: 402px;
+#right{
+	float: right;
 }
 button{
-	float: right;
 	background-color: #666;
-	width: 80px;
-	height: 35px;
+	margin-top: 15px;
+	width: 402px;
+	height: 25px;
 	color: #fff;
-	font-size: 16px;
+	font-size: 14px;
 	font-family: Century Gothic, sans-serif;	
 	border:outset 2px #8a858a;
 	-moz-border-radius-topleft: 10px;
@@ -96,4 +88,3 @@ button{
 	border-bottom-left-radius:10px;
 	border-bottom-right-radius:10px;
 }
-button

@@ -1,29 +1,51 @@
-<html>
-<head>
-	<title>Connect 4</title>
-	<link rel="stylesheet" type="text/css" href="css/prettify.css" />
-	<script src="js/logic.js" type="text/javascript"></script>
-	<script src="js/animate.js" type="text/javascript"></script>
-	<script src="js/Tween.js" type="text/javascript"></script>
-	<script src="js/jquery.js" type="text/javascript"></script>
-</head>
-<body onload="init();">
-	<div id="main_container">
-		<div id="header_container">
-			<h1>connect-colors</h1>
-		</div>
-		
-		<canvas id="drop_zone" width="402" height="10">
-		</canvas>
-			<canvas id="c" width="402" height="402">
-			You must use a <a href="http://support.google.com/chrome/bin/answer.py?hl=en&answer=95346">modern browser </a> in order to play this game.</canvas>
-
-		<ul>
-			<li>current player: </li>
-			<li id="player">red</li>
-		</ul>
-		<button type="button" onclick="new_game();">reset</button>
-	</div>
-
-</body>
+<html>
+<head>
+	<title>connect four</title>
+	<link rel="stylesheet" type="text/css" href="css/prettify.css" />
+	<script src="js/logic.js" type="text/javascript"></script>
+	<script src="js/animate.js" type="text/javascript"></script>
+	<script src="js/Tween.js" type="text/javascript"></script>
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/kinetic.js" type="text/javascript"></script>
+        <script>
+
+            window.onload = function(){
+			init();
+			}
+        </script>
+	
+</head>
+<body onmousedown="return false;">
+			
+	<div id="main_container">
+			<header>
+				<h1>connect four</h1>
+				<ul>
+					<li><img src="img/red_icon.png"></img>Human wins: <span id="player_wins">0</span></li>
+					<li><img src="img/green_icon.png"></img>Robot wins: <span id="robo_wins">0</span></li>
+				</ul>
+			</header>
+		<canvas id="drop_zone" width="402" height="22">
+		</canvas>
+			<canvas id="c" width="402" height="402">
+			You must use a <a href="http://support.google.com/chrome/bin/answer.py?hl=en&answer=95346">modern browser </a> in order to play this game.</canvas>
+			<button onclick="reset_game();">Reset</button>
+		
+			</div>
+			<footer>
+	<audio id="song" controls loop>  	
+		<source src="audio/win_cut.mp3" />  
+	</audio> </footer>
+	<script type="text/javascript">
+		if(localStorage.getItem("player_w") === null){
+			localStorage.setItem("player_w", "0");
+		}
+		if(localStorage.getItem("robo_w") === null){
+			localStorage.setItem("robo_w", "0");
+		}
+		document.getElementById('player_wins').innerHTML = parseInt(localStorage.getItem("player_w"));
+		document.getElementById('robo_wins').innerHTML = parseInt(localStorage.getItem("robo_w"));
+	
+	</script>
+</body>
 </html>

@@ -11,12 +11,13 @@
             
             function update_rectangle(rect_in){
 				ctx.fillStyle = rect_in.color;
-				ctx.lineWidth = 5;
-				ctx.shadowOffsetX = 3;
-				ctx.shadowOffsetY = 3;
-				ctx.shadowBlur    = 4;
+				ctx.strokeStyle = "#000";
+				ctx.lineWidth = 2;
+				ctx.shadowOffsetX = .5;
+				ctx.shadowOffsetY = .5;
+				ctx.shadowBlur    = 2;
 				ctx.beginPath();
-                ctx.rect(rect_in.x, rect_in.y, rect_in.width, rect_in.height);
+				ctx.arc(rect_in.x+(tile_size/2), rect_in.y+(tile_size/2), rect_in.height/2, 0, 2*Math.PI, false);
 				ctx.stroke();
                 ctx.fill();
             }
@@ -30,8 +31,27 @@
 				
 				//for each block in falling blocks, see if it is
 				// animatable.  If so, animate, if not, draw it.
-				if(!winner || !last_done){
+				if(reset_animation){
+					ctx.clearRect(0, 0, canvas1.width, canvas1.height);
+					draw_board();
+					var continue_falling= false;
+					for(var i =0; i < blocks.length; i++){
 					
+						blocks[i].y += 10;
+						if(blocks[i].y < 400){
+							continue_falling = true;
+						}
+						update_rectangle(blocks[i]);
+					}
+					last_time = time;
+					if(continue_falling){
+					requestAnimFrame(function(){
+						animate(last_time);
+					});}else{
+						new_game();
+						return;
+					}
+				}else if(!winner || !last_done){
 					ctx.clearRect(0, 0, canvas1.width, canvas1.height);
 					draw_board();
 					for(var i =0; i < blocks.length; i++){
@@ -54,6 +74,10 @@
 						animate(last_time);
 					});
 				}else{
+					if(play_song){
+					document.getElementById('song').play();
+					}
+					
 					var counter = 0;
 					var w_count = 0;
 					for(var jj = 0; jj < board_size; jj++){
@@ -66,12 +90,15 @@
 								//draw_board();
 								ctx.strokeStyle = "#fff";
 								ctx.strokeRect(ii*tile_size+(tile_size/10), jj*tile_size+(tile_size/10), tile_size*.8, tile_size*.8);
-								ctx.stroke();
 								w_count++;
 							}
 							counter++;
 						}
 					}
+					last_time = time;
+					requestAnimFrame(function(){
+						animate(last_time);
+					});
 				}
 			}
 			function get_mouse_position(event) {
@@ -99,12 +126,13 @@
 				ctx2.shadowBlur    = 4;
 				ctx2.fillStyle = drop_zone_block.color;
 				ctx2.beginPath();
-				ctx2.moveTo(drop_zone_block.x, 10);
-				ctx2.lineTo(drop_zone_block.x -10,0);
-				ctx2.lineTo(drop_zone_block.x + 10, 0);
-				ctx2.closePath();
+				if(drop_zone_block.x+(tile_size/2) >= 402){
+					drop_zone_block.x = 402 - (tile_size/2);
+				}else if(drop_zone_block.x-(tile_size/2) <= 0){
+					drop_zone_block.x = (tile_size/2);
+				}
+				ctx2.arc(drop_zone_block.x, 22, 22, 0, Math.PI, true);
 				ctx2.fill();
 				ctx2.stroke();
 			}
-			
  
