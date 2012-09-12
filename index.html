@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Connect 4</title>
+	<link rel="stylesheet" type="text/css" href="css/prettify.css" />
+	<script src="js/logic.js" type="text/javascript"></script>
+	<script src="js/animate.js" type="text/javascript"></script>
+	<script src="js/Tween.js" type="text/javascript"></script>
+	<script src="js/jquery.js" type="text/javascript"></script>
+</head>
+<body onload="init();">
+	<div id="main_container">
+		<div id="header_container">
+			<h1>connect-colors</h1>
+		</div>
+		
+		<canvas id="drop_zone" width="402" height="10">
+		</canvas>
+			<canvas id="c" width="402" height="402">
+			You must use a <a href="http://support.google.com/chrome/bin/answer.py?hl=en&answer=95346">modern browser </a> in order to play this game.</canvas>
+
+		<ul>
+			<li>current player: </li>
+			<li id="player">red</li>
+		</ul>
+		<button type="button" onclick="new_game();">reset</button>
+	</div>
+
+</body>
+</html>
